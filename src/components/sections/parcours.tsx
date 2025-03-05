@@ -98,7 +98,8 @@ export function Parcours() {
       content: (
         <div>
           <h4 className="text-neutral-800 dark:text-neutral-200 text-xl font-normal mb-8">
-            Conception d'un site web pour la gestion de ficihers, flashcard, notes, todo, ...
+            
+        Conception d&apos;un site web pour la gestion de ficihers, flashcard, notes, todo, ...
           </h4>
           <div className="grid grid-cols-2 gap-4">
             <Image

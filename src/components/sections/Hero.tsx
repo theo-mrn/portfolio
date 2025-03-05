@@ -2,7 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Github, Linkedin, Twitter, ChevronDown } from "lucide-react"
 import { Spotlight } from "@/components/ui/spotlight-new";
-
+import Image from "next/image";
 
 
 interface HeroProps {
@@ -118,10 +118,12 @@ export function Hero({ handleScroll, refs }: HeroProps) {
             className="relative aspect-square max-w-md mx-auto"
           >
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 animate-pulse" />
-            <img
-              src="/placeholder.svg?height=500&width=500"
+            <Image
+              src="/img/hero.png"
               alt="Portrait"
               className="rounded-full object-cover p-2 relative z-10"
+              width={500}
+              height={500}
             />
           </motion.div>
         </div>

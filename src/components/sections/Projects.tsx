@@ -1,8 +1,8 @@
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Briefcase } from "lucide-react"
 import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
+import Image from "next/image";
 import {
   MorphingDialog,
   MorphingDialogTrigger,
@@ -116,7 +116,7 @@ export function Projects() {
                   <MorphingDialogContent className="max-w-4xl w-[90vw] mx-auto">
                     <Card className="overflow-hidden h-full flex flex-col">
                       <div className="relative overflow-hidden aspect-video">
-                        <img
+                        <Image
                           src={project.image}
                           alt={project.title}
                           className='object-cover w-full h-full'
