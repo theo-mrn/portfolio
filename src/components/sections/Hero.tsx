@@ -105,13 +105,12 @@ export function Hero({ handleScroll, refs }: HeroProps) {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-            className="relative aspect-square max-w-md mx-auto"
+            className="relative aspect-square max-w-md mx-auto overflow-hidden rounded-full"
           >
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 animate-pulse" />
             <Image
-              src="/img/hero.png"
+              src="/profile/image.jpg"
               alt="Portrait"
-              className="rounded-full object-cover p-2 relative z-10"
+              className="object-cover w-full h-full filter brightness-100"
               width={500}
               height={500}
             />
