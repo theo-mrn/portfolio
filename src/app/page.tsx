@@ -12,6 +12,7 @@ import { ScrollProgress } from "@/components/magicui/scroll-progress";
 import { DotPattern } from "@/components/magicui/dot-pattern";
 import BackToTop from "@/components/magicui/back-to-top"
 import { cn } from "@/lib/utils"
+import { config } from "./config"
 
 
 
@@ -69,7 +70,12 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-background text-foreground">
        <ScrollProgress className="top-[69px]" />
-      <Header activeSection={activeSection} handleScroll={handleScroll} refs={refs} />
+      <Header 
+        activeSection={activeSection} 
+        handleScroll={handleScroll} 
+        refs={refs} 
+        name={config.name}
+      />
       <div ref={homeRef}>
         <Hero handleScroll={handleScroll} refs={{ projectsRef, contactRef }} />
       </div>

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
-
+import React, { useEffect, useState } from 'react'
 
 interface HeaderProps {
   activeSection: string
@@ -11,10 +11,29 @@ interface HeaderProps {
     projectsRef: React.RefObject<HTMLDivElement>
     contactRef: React.RefObject<HTMLDivElement>
   }
+  name: string
 }
 
-export function Header({ activeSection, handleScroll, refs }: HeaderProps) {
+export function Header({ activeSection, handleScroll, refs, name }: HeaderProps) {
   const { homeRef, aboutRef, projectsRef, contactRef } = refs
+  const [isDarkMode, setIsDarkMode] = useState(false)
+
+  useEffect(() => {
+    const theme = localStorage.getItem("theme")
+    if (theme === "dark") {
+      setIsDarkMode(true)
+      document.documentElement.classList.add("dark")
+    } else {
+      document.documentElement.classList.remove("dark")
+    }
+  }, [])
+
+  const toggleTheme = () => {
+    const newTheme = !isDarkMode ? "dark" : "light"
+    setIsDarkMode(!isDarkMode)
+    document.documentElement.classList.toggle("dark")
+    localStorage.setItem("theme", newTheme)
+  }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b">
@@ -23,7 +42,7 @@ export function Header({ activeSection, handleScroll, refs }: HeaderProps) {
    
      
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-          <h1 className="text-xl font-bold">Theo MORIN</h1>
+          <h1 className="text-xl font-bold">{name}</h1>
         </motion.div>
         <motion.nav
           initial={{ opacity: 0, y: -10 }}
@@ -98,9 +117,7 @@ export function Header({ activeSection, handleScroll, refs }: HeaderProps) {
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => {
-                document.documentElement.classList.toggle("dark")
-              }}
+              onClick={toggleTheme}
             >
               <span className="sr-only">Toggle theme</span>
               <svg

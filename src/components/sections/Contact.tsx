@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Mail, Github, Linkedin } from "lucide-react"
 import { TypewriterEffect } from "../ui/typewriter-effect";
+import { config } from "@/app/config";
 export function Contact() {
   const words = [
     {
@@ -51,7 +52,7 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Email</p>
-                  <p className="font-medium">contact@theomorin.com</p>
+                  <p className="font-medium">{config.email}</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -77,12 +78,12 @@ export function Contact() {
                 <div>
                   <p className="text-sm text-muted-foreground">GitHub</p>
                   <a 
-                    href="https://github.com/theo-mrn"
+                    href={config.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-medium hover:text-primary transition-colors"
                   >
-                    github.com/theo-mrn
+                    {config.github}
                   </a>
                 </div>
               </div>

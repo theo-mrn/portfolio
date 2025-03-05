@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Theo MORIN | Développeur Web",
-  description: "Portfolio de Jean Dupont, développeur web spécialisé en React et Next.js",
+  description: "Portfolio de Théo MORIN, développeur web spécialisé en React et Next.js",
 }
 
 export default function RootLayout({
@@ -18,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/favicon/image.png" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

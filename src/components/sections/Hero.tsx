@@ -1,8 +1,9 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Github, Linkedin, Twitter, ChevronDown } from "lucide-react"
+import { Github, Linkedin,  ChevronDown } from "lucide-react"
 import { Spotlight } from "@/components/ui/spotlight-new";
 import Image from "next/image";
+import { config } from "@/app/config";
 
 
 interface HeroProps {
@@ -77,7 +78,7 @@ export function Hero({ handleScroll, refs }: HeroProps) {
               className="flex items-center gap-6 pt-2"
             >
               <a
-                href="https://github.com/theo-mrn"
+                href={config.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
@@ -88,7 +89,7 @@ export function Hero({ handleScroll, refs }: HeroProps) {
                 <span className="sr-only">GitHub</span>
               </a>
               <a
-                href="https://www.linkedin.com/in/theo-morin-52a98b291/"
+                href={config.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
@@ -97,18 +98,7 @@ export function Hero({ handleScroll, refs }: HeroProps) {
                   <Linkedin size={20} />
                 </div>
                 <span className="sr-only">LinkedIn</span>
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <div className="w-10 h-10 rounded-full bg-background border border-border flex items-center justify-center hover:border-primary hover:scale-110 transition-all">
-                  <Twitter size={20} />
-                </div>
-                <span className="sr-only">Twitter</span>
-              </a>
+             </a>
             </motion.div>
           </motion.div>
           <motion.div
