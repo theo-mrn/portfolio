@@ -10,6 +10,7 @@ import { Footer } from "@/components/sections/Footer"
 import { About } from "@/components/sections/About"
 import { ScrollProgress } from "@/components/magicui/scroll-progress";
 import { DotPattern } from "@/components/magicui/dot-pattern";
+import BackToTop from "@/components/magicui/back-to-top"
 import { cn } from "@/lib/utils"
 
 
@@ -91,6 +92,7 @@ export default function Portfolio() {
       </div>
       
       <Footer />
+      <BackToTop />
     </div>
   )
 }
