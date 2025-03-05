@@ -16,7 +16,7 @@ interface HeaderProps {
 
 export function Header({ activeSection, handleScroll, refs, name }: HeaderProps) {
   const { homeRef, aboutRef, projectsRef, contactRef } = refs
-  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(true)
 
   useEffect(() => {
     const theme = localStorage.getItem("theme")
@@ -24,6 +24,7 @@ export function Header({ activeSection, handleScroll, refs, name }: HeaderProps)
       setIsDarkMode(true)
       document.documentElement.classList.add("dark")
     } else {
+      setIsDarkMode(false)
       document.documentElement.classList.remove("dark")
     }
   }, [])
