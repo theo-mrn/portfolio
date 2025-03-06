@@ -7,8 +7,13 @@ import { Mail, Github, Linkedin } from "lucide-react"
 import { TypewriterEffect } from "../ui/typewriter-effect";
 import { config } from "@/app/config";
 import { useContactForm } from "@/hooks/useContactForm";
+import { useTranslations } from 'next-intl'
+
+
 
 export function Contact() {
+  const t = useTranslations('contact')
+
   const {
     formData,
     isSubmitting,
@@ -18,10 +23,10 @@ export function Contact() {
 
   const words = [
     {
-      text: "Me",
+      text: t('me'),
     },
     {
-      text: "Contacter ",
+      text: t('contact'),
     },
   ];
 
@@ -48,10 +53,9 @@ export function Contact() {
             viewport={{ once: true, margin: "-100px" }}
             className="space-y-6"
           >
-            <h3 className="text-2xl font-bold">Discutons de votre projet</h3>
+            <h3 className="text-2xl font-bold">{t('message1')}</h3>
             <p className="text-muted-foreground">
-              Vous avez un projet en tête ? N&apos;hésitez pas à me contacter pour en discuter. Je suis toujours à la
-              recherche de nouvelles opportunités passionnantes.
+              {t('sousmessage')}
             </p>
             <div className="space-y-4 pt-4">
               <div className="flex items-center gap-4">
@@ -109,11 +113,11 @@ export function Contact() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-medium">
-                        Nom
+                        {t('name')}
                       </label>
                       <Input 
                         id="name" 
-                        placeholder="Votre nom" 
+                        placeholder={t('name')} 
                         value={formData.name}
                         onChange={handleChange}
                         required
@@ -122,11 +126,11 @@ export function Contact() {
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="subject" className="text-sm font-medium">
-                      Sujet
+                      {t('sujet')}
                     </label>
                     <Input 
                       id="subject" 
-                      placeholder="Sujet de votre message" 
+                      placeholder={t('sujet')} 
                       value={formData.subject}
                       onChange={handleChange}
                       required
@@ -134,11 +138,11 @@ export function Contact() {
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="message" className="text-sm font-medium">
-                      Message
+                      {t('message')}
                     </label>
                     <Textarea 
                       id="message" 
-                      placeholder="Votre message" 
+                      placeholder={t('message')} 
                       rows={5} 
                       value={formData.message}
                       onChange={handleChange}
@@ -146,7 +150,7 @@ export function Contact() {
                     />
                   </div>
                   <Button type="submit" className="w-full" disabled={isSubmitting}>
-                    {isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}
+                    {isSubmitting ? t('sending') : t('send')}
                   </Button>
                 </form>
               </CardContent>

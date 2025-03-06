@@ -1,6 +1,12 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import React, { useEffect, useState } from 'react'
+import { useTranslations } from 'next-intl'
+import { usePathname } from 'next/navigation'
+import { locales } from '@/i18n/settings'
+import { Link } from '@/i18n/navigation'
 
 interface HeaderProps {
   activeSection: string
@@ -15,8 +21,12 @@ interface HeaderProps {
 }
 
 export function Header({ activeSection, handleScroll, refs, name }: HeaderProps) {
+  const t = useTranslations('navigation')
+  const tTheme = useTranslations('theme')
   const { homeRef, aboutRef, projectsRef, contactRef } = refs
   const [isDarkMode, setIsDarkMode] = useState(true)
+  const pathname = usePathname()
+  const currentLocale = pathname.split('/')[1] || 'fr'
 
   useEffect(() => {
     const theme = localStorage.getItem("theme")
@@ -38,10 +48,7 @@ export function Header({ activeSection, handleScroll, refs, name }: HeaderProps)
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b">
-      
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-   
-     
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
           <h1 className="text-xl font-bold">{name}</h1>
         </motion.div>
@@ -57,7 +64,7 @@ export function Header({ activeSection, handleScroll, refs, name }: HeaderProps)
               activeSection === "home" ? "text-primary" : "text-muted-foreground"
             }`}
           >
-            Accueil
+            {t('home')}
           </button>
           <button
             onClick={() => handleScroll(aboutRef)}
@@ -65,7 +72,7 @@ export function Header({ activeSection, handleScroll, refs, name }: HeaderProps)
               activeSection === "about" ? "text-primary" : "text-muted-foreground"
             }`}
           >
-            À propos
+            {t('about')}
           </button>
           <button
             onClick={() => handleScroll(projectsRef)}
@@ -73,7 +80,7 @@ export function Header({ activeSection, handleScroll, refs, name }: HeaderProps)
               activeSection === "projects" ? "text-primary" : "text-muted-foreground"
             }`}
           >
-            Projets
+            {t('projects')}
           </button>
           <button
             onClick={() => handleScroll(contactRef)}
@@ -81,10 +88,27 @@ export function Header({ activeSection, handleScroll, refs, name }: HeaderProps)
               activeSection === "contact" ? "text-primary" : "text-muted-foreground"
             }`}
           >
-            Contact
+            {t('contact')}
           </button>
         </motion.nav>
         <div className="flex items-center gap-2">
+          <div className="flex gap-2">
+            {locales.map((locale) => {
+              const isActive = currentLocale === locale
+              return (
+                <Link
+                  key={locale}
+                  href="/"
+                  locale={locale}
+                  className={`text-sm font-medium ${
+                    isActive ? 'text-primary' : 'text-muted-foreground hover:text-primary'
+                  }`}
+                >
+                  {locale.toUpperCase()}
+                </Link>
+              )
+            })}
+          </div>
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -92,7 +116,7 @@ export function Header({ activeSection, handleScroll, refs, name }: HeaderProps)
             className="md:hidden"
           >
             <Button variant="ghost" size="icon">
-              <span className="sr-only">Menu</span>
+              <span className="sr-only">{tTheme('menu')}</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -120,7 +144,7 @@ export function Header({ activeSection, handleScroll, refs, name }: HeaderProps)
               size="icon"
               onClick={toggleTheme}
             >
-              <span className="sr-only">Toggle theme</span>
+              <span className="sr-only">{tTheme('toggle')}</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

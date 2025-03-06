@@ -1,9 +1,12 @@
+"use client"
+
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Github, Linkedin,  ChevronDown } from "lucide-react"
 import { Spotlight } from "@/components/ui/spotlight-new";
 import Image from "next/image";
 import { config } from "@/app/config";
+import { useTranslations } from 'next-intl'
 
 
 interface HeroProps {
@@ -15,6 +18,7 @@ interface HeroProps {
 }
 
 export function Hero({ handleScroll, refs }: HeroProps) {
+  const t = useTranslations('hero')
   const { projectsRef, contactRef } = refs
   const { scrollYProgress } = useScroll()
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
@@ -36,10 +40,6 @@ export function Hero({ handleScroll, refs }: HeroProps) {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="space-y-6"
           >
-
-
-
-
             <div className="space-y-2">
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
@@ -47,7 +47,7 @@ export function Hero({ handleScroll, refs }: HeroProps) {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="text-4xl md:text-6xl font-bold tracking-tight"
               >
-                Développeur Web <span className="text-primary">Créatif</span>
+                {t('title')} <span className="text-primary">{t('highlight')}</span>
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -55,7 +55,7 @@ export function Hero({ handleScroll, refs }: HeroProps) {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 className="text-xl text-muted-foreground"
               >
-                Je crée des expériences web modernes et interactives
+                {t('description')}
               </motion.p>
             </div>
             <motion.div
@@ -65,10 +65,10 @@ export function Hero({ handleScroll, refs }: HeroProps) {
               className="flex flex-col sm:flex-row gap-4"
             >
               <Button onClick={() => handleScroll(projectsRef)} size="lg">
-                Voir mes projets
+                {t('cta.projects')}
               </Button>
               <Button onClick={() => handleScroll(contactRef)} variant="outline" size="lg">
-                Me contacter
+                {t('cta.contact')}
               </Button>
             </motion.div>
             <motion.div
@@ -86,7 +86,7 @@ export function Hero({ handleScroll, refs }: HeroProps) {
                 <div className="w-10 h-10 rounded-full bg-background border border-border flex items-center justify-center hover:border-primary hover:scale-110 transition-all">
                   <Github size={20} />
                 </div>
-                <span className="sr-only">GitHub</span>
+                <span className="sr-only">{t('social.github')}</span>
               </a>
               <a
                 href={config.linkedin}
@@ -97,7 +97,7 @@ export function Hero({ handleScroll, refs }: HeroProps) {
                 <div className="w-10 h-10 rounded-full bg-background border border-border flex items-center justify-center hover:border-primary hover:scale-110 transition-all">
                   <Linkedin size={20} />
                 </div>
-                <span className="sr-only">LinkedIn</span>
+                <span className="sr-only">{t('social.linkedin')}</span>
              </a>
             </motion.div>
           </motion.div>
@@ -122,7 +122,7 @@ export function Hero({ handleScroll, refs }: HeroProps) {
           transition={{ duration: 0.5, delay: 1 }}
           className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2"
         >
-          <span className="text-sm text-muted-foreground">Découvrir</span>
+          <span className="text-sm text-muted-foreground">{t('discover')}</span>
           <ChevronDown className="animate-bounce text-muted-foreground" size={24} />
         </motion.div>
       </div>
