@@ -2,8 +2,6 @@
 
 # dependencies
 /node_modules
-/react-email-starter/node_modules
-/react-email-starter/emails/node_modules
 /.pnp
 .pnp.*
 .yarn/*
