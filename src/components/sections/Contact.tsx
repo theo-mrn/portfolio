@@ -6,7 +6,16 @@ import { Textarea } from "@/components/ui/textarea"
 import { Mail, Github, Linkedin } from "lucide-react"
 import { TypewriterEffect } from "../ui/typewriter-effect";
 import { config } from "@/app/config";
+import { useContactForm } from "@/hooks/useContactForm";
+
 export function Contact() {
+  const {
+    formData,
+    isSubmitting,
+    handleSubmit,
+    handleChange
+  } = useContactForm();
+
   const words = [
     {
       text: "Me",
@@ -15,7 +24,6 @@ export function Contact() {
       text: "Contacter ",
     },
   ];
-
 
   return (
     <section className="py-20 bg-muted/30">
@@ -97,35 +105,48 @@ export function Contact() {
           >
             <Card>
               <CardContent className="p-6">
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-medium">
                         Nom
                       </label>
-                      <Input id="name" placeholder="Votre nom" />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium">
-                        Email
-                      </label>
-                      <Input id="email" type="email" placeholder="Votre email" />
+                      <Input 
+                        id="name" 
+                        placeholder="Votre nom" 
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                      />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="subject" className="text-sm font-medium">
                       Sujet
                     </label>
-                    <Input id="subject" placeholder="Sujet de votre message" />
+                    <Input 
+                      id="subject" 
+                      placeholder="Sujet de votre message" 
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="message" className="text-sm font-medium">
                       Message
                     </label>
-                    <Textarea id="message" placeholder="Votre message" rows={5} />
+                    <Textarea 
+                      id="message" 
+                      placeholder="Votre message" 
+                      rows={5} 
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
-                  <Button type="submit" className="w-full">
-                    Envoyer le message
+                  <Button type="submit" className="w-full" disabled={isSubmitting}>
+                    {isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}
                   </Button>
                 </form>
               </CardContent>
@@ -136,3 +157,4 @@ export function Contact() {
     </section>
   )
 } 
+

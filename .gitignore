@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/react-email-starter/node_modules
+/react-email-starter/emails/node_modules
 /.pnp
 .pnp.*
 .yarn/*
@@ -19,6 +21,7 @@
 
 # production
 /build
+
 
 # misc
 .DS_Store

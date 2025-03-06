@@ -16,7 +16,6 @@ import { config } from "./config"
 
 
 
-
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home")
   const homeRef = useRef<HTMLDivElement>(null!)

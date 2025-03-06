@@ -1,5 +1,4 @@
 import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
 import Image from "next/image";
@@ -78,11 +77,6 @@ export function Projects() {
                         className="object-cover w-full h-full"
                       />
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
-                        <Link href="/projet">
-                          <Button variant="secondary" size="sm">
-                            Voir le projet
-                          </Button>
-                        </Link>
                       </div>
                     </div>
                     <CardContent className="p-6 flex-1 flex flex-col">
