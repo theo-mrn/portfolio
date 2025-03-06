@@ -1,6 +1,5 @@
 import { NotionMagicLinkEmail } from '../../../../react-email-starter/emails/notion-magic-link';
 import { Resend } from 'resend';
-import { config } from '../../config';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -9,8 +8,8 @@ export async function POST(request: Request) {
     const { name, subject, message } = await request.json();
 
     const { data, error } = await resend.emails.send({
-      from: 'Contact Form <onboarding@resend.dev>',
-      to: config.email,
+      from: 'Contact Form <contact@theomorin.com>',
+      to: ['contact@theomorin.com'],
       subject: `Contact Form: ${subject}`,
       react: NotionMagicLinkEmail({ name, subject, message }),
     });
