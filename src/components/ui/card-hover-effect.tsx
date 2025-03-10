@@ -11,7 +11,6 @@ export const HoverEffect = ({
 }: {
   items: {
     title: string;
-    description: string;
     link: string;
   }[];
   className?: string;
@@ -21,7 +20,7 @@ export const HoverEffect = ({
   return (
     <div
       className={cn(
-        "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  py-10 -z-50",
+        "grid grid-cols-2 gap-2 py-2",
         className
       )}
     >
@@ -29,7 +28,7 @@ export const HoverEffect = ({
         <Link
           href={item?.link}
           key={item?.link}
-          className="relative group  block p-2 h-full w-full"
+          className="relative group block p-1 h-full w-full max-w-[120px] mx-auto"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
@@ -53,7 +52,6 @@ export const HoverEffect = ({
           <Card>
             <Image src={item.link} alt={item.title} width={32} height={32} />
             <CardTitle>{item.title}</CardTitle>
-            {item.description && <CardDescription>{item.description}</CardDescription>}
           </Card>
         </Link>
       ))}
@@ -71,12 +69,12 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-4 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
+        "rounded-2xl h-full w-full p-2 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20 flex flex-col items-center",
         className
       )}
     >
       <div className="relative z-50">
-        <div className="p-4">{children}</div>
+        <div className="p-2 flex flex-col items-center">{children}</div>
       </div>
     </div>
   );

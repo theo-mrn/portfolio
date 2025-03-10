@@ -3,7 +3,6 @@
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Github, Linkedin,  ChevronDown } from "lucide-react"
-import { Spotlight } from "@/components/ui/spotlight-new";
 import Image from "next/image";
 import { config } from "@/app/config";
 import { useTranslations } from 'next-intl'
@@ -31,7 +30,6 @@ export function Hero({ handleScroll, refs }: HeroProps) {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-background z-0" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(var(--primary-rgb),0.1),transparent_50%)]" />
       </motion.div>
-      <Spotlight />
       <div className="container mx-auto px-4 z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <motion.div

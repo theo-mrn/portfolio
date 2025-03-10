@@ -1,72 +1,94 @@
 import React from "react";
 import { HoverEffect } from "../ui/card-hover-effect";
+import { Spotlight } from "@/components/ui/spotlight";
 
 export function About() {
   return (
-    <div className="max-w-6xl mx-auto px-8 -z-50">
-      <HoverEffect items={projects} />
+    <div className="max-w-6xl min-h-64 mx-auto px-8">
+        <Spotlight />
+      <div className="flex flex-col items-center mb-16">
+        <h1 className="text-4xl font-bold text-center mb-16 text-white">About Me</h1>
+        <p className="text-lg text-center max-w-2xl p-12 text-white">
+          I am a software engineer with a passion for building scalable and efficient systems.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div>
+          <h3 className="text-2xl font-bold text-center mb-6 text-white">Frontend</h3>
+          <HoverEffect items={frontendProjects} />
+        </div>
+        <div>
+          <h3 className="text-2xl font-bold text-center mb-6 text-white">Backend</h3>
+          <HoverEffect items={backendProjects} />
+        </div>
+        <div>
+          <h3 className="text-2xl font-bold text-center mb-6 text-white">Database</h3>
+          <HoverEffect items={databaseProjects} />
+        </div>
+      </div>
     </div>
   );
 }
-export const projects = [
+
+interface Project {
+  title: string;
+  link: string;
+}
+
+export const frontendProjects: Project[] = [
     {
         title: "Next.js",
-        description: "A React framework for production.",
         link: "/svg/next.png",
     },
     {
-        title: "Node.js",
-        description: "JavaScript runtime built on Chrome's V8 engine.",
-        link: "/svg/node.svg",
-    },
-    {
-        title: "PostgreSQL",
-        description: "A powerful, open source object-relational database system.",
-        link: "/svg/postgresql.png",
-    },
-    {
         title: "React",
-        description: "A JavaScript library for building user interfaces.",
         link: "/svg/react.svg",
     },
     {
-        title: "Docker",
-        description: "A platform for developing, shipping, and running applications.",
-        link: "/svg/docker.svg",
-    },
-    {
-        title: "MongoDB",
-        description: "A document database with the scalability and flexibility that you want.",
-        link: "/svg/mongodb.svg",
-    },
-    {
-        title: "Tailwind CSS",
-        description: "A utility-first CSS framework for creating custom designs.",
+        title: "Tailwind",
         link: "/svg/tailwind.svg",
     },
     {
+        title: "TypeScript",
+        link: "/svg/typescript.svg",
+    },
+];
+
+export const backendProjects: Project[] = [
+    {
+        title: "Node.js",
+        link: "/svg/node.svg",
+    },
+    {
+        title: "Docker",
+        link: "/svg/docker.svg",
+    },
+    {
         title: "Resend",
-        description: "A platform for sending emails.",
         link: "/svg/resend.png",
     },
     {
+        title: "Stripe",
+        link: "/svg/stripe.png",
+    },
+];
+
+export const databaseProjects: Project[] = [
+    {
+        title: "PostgreSQL",
+        link: "/svg/postgresql.png",
+    },
+    {
+        title: "MongoDB",
+        link: "/svg/mongodb.svg",
+    },
+    {
         title: "Casandra",
-        description: "A highly scalable NoSQL database.",
         link: "/svg/cassandra.png",
     },
     {
-        title: "TypeScript",
-        description: "A typed superset of JavaScript that compiles to plain JavaScript.",
-        link: "/svg/typescript.svg",
-    },
-    {
-        title: "Stripe",
-        description: "A technology company that builds economic infrastructure for the internet.",
-        link: "/svg/stripe.png",
-    },
-    {
         title: "My SQL",
-        description: "An open-source relational database management system.",
         link: "/svg/mysql.svg",
     },
 ];
+

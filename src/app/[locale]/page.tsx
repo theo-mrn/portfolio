@@ -5,7 +5,6 @@ import { Header } from "@/components/sections/Header"
 import { Hero } from "@/components/sections/Hero"
 import { Projects } from "@/components/sections/Projects"
 import { Contact } from "@/components/sections/Contact"
-import { GlobeDemo } from "@/components/sections/cyber"
 import { Footer } from "@/components/sections/Footer"
 import { About } from "@/components/sections/About"
 import { ScrollProgress } from "@/components/magicui/scroll-progress"
@@ -87,15 +86,17 @@ export default function LocalePage() {
           "[mask-image:radial-gradient(600px_circle_at_center,white,transparent)]"
         )}
       />
-      <div className="-z-50" ref={aboutRef}>
+      <div className="relative min-h-screen py-16" ref={aboutRef}>
+     
         <About />
       </div>
+      
       <div ref={projectsRef}>
         <Projects />
       </div>
-      <div>
+      {/* <div>
         <GlobeDemo />
-      </div>
+      </div> */}
       <div ref={contactRef}>
         <Contact />
       </div>

@@ -40,7 +40,7 @@ const projects = [
     description: "A collaborative task management application with real-time updates and team features.",
     details: "Cette application permet aux équipes de gérer leurs tâches efficacement avec des mises à jour en temps réel.",
     tags: ["Next.js", "TypeScript", "Supabase", "Resend"],
-    image: "/Coiffeur/img1.jpg",
+    image: "/Coiffeur/img5.jpg",
   },
 ]
 
@@ -71,13 +71,15 @@ export function Projects() {
             >
               <MorphingDialog>
                 <MorphingDialogTrigger>
-                  <Card className="overflow-hidden h-full flex flex-col group cursor-pointer">
-                    <div className="relative overflow-hidden aspect-video">
+                  <Card className="h-[450px] w-full flex flex-col group cursor-pointer overflow-hidden">
+                    <div className="relative h-[280px] w-full">
                       <motion.img
                         whileHover={{ scale: 1.05 }}
                         transition={{ duration: 0.3 }}
                         src={project.image}
                         alt={project.title}
+                        width={800}
+                        height={400}
                         className="object-cover w-full h-full"
                       />
                       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
@@ -112,12 +114,14 @@ export function Projects() {
                 </MorphingDialogTrigger>
                 <MorphingDialogContainer>
                   <MorphingDialogContent className="max-w-4xl w-[90vw] mx-auto">
-                    <Card className="overflow-hidden h-full flex flex-col">
-                      <div className="relative overflow-hidden aspect-video">
+                    <Card className="h-full flex flex-col">
+                      <div className="relative h-[600px] w-full">
                         <Image
+                             width={1200}
+                             height={600}
                           src={project.image}
                           alt={project.title}
-                          className='object-cover w-full h-full'
+                          className='object-cover w-full h-full rounded-t-lg'
                         />
                       </div>
                       <CardContent className="p-8 flex-1 flex flex-col">
