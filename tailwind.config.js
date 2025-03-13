@@ -1,3 +1,7 @@
+const {
+  default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     darkMode: ["class"],
@@ -57,55 +61,40 @@ module.exports = {
           md: "calc(var(--radius) - 2px)",
           sm: "calc(var(--radius) - 4px)",
         },
-        keyframes: {
-          "accordion-down": {
-            from: { height: 0 },
-            to: { height: "var(--radix-accordion-content-height)" },
-          },
-          "accordion-up": {
-            from: { height: "var(--radix-accordion-content-height)" },
-            to: { height: 0 },
-          },
-          spotlight: {
-            "0%": {
-              opacity: 0,
-              transform: "translate(-72%, -62%) scale(0.5)",
-            },
-            "100%": {
-              opacity: 1,
-              transform: "translate(-50%,-40%) scale(1)",
-            },
-          },
-        },
         animation: {
-          spotlight: "spotlight 2s ease .75s 1 forwards",
+          ripple: "ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite",
+          aurora: "aurora 60s linear infinite",
         },
         keyframes: {
-          spotlight: {
-            "0%": {
-              opacity: 0,
-              transform: "translate(-72%, -62%) scale(0.5)",
+          ripple: {
+            "0%, 100%": {
+              transform: "translate(-50%, -50%) scale(1)",
             },
-            "100%": {
-              opacity: 1,
-              transform: "translate(-50%,-40%) scale(1)",
+            "50%": {
+              transform: "translate(-50%, -50%) scale(0.9)",
+            },
+          },
+          aurora: {
+            from: {
+              backgroundPosition: "50% 50%, 50% 50%",
+            },
+            to: {
+              backgroundPosition: "350% 50%, 350% 50%",
             },
           },
         },
       },
     },
-    plugins: [import("tailwindcss-animate"),addVariablesForColors],
-  };
+    plugins: [import("tailwindcss-animate"), addVariablesForColors],
+};
 
-
-
-  function addVariablesForColors({ addBase, theme }) {
-    let allColors = flattenColorPalette(theme("colors"));
-    let newVars = Object.fromEntries(
-      Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
-    );
-   
-    addBase({
-      ":root": newVars,
-    });
-  }
+function addVariablesForColors({ addBase, theme }) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+ 
+  addBase({
+    ":root": newVars,
+  });
+}

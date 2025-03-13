@@ -1,14 +1,13 @@
 import React from "react";
 import { HoverEffect } from "../ui/card-hover-effect";
-import { Spotlight } from "@/components/ui/spotlight";
-
+import { Globe } from "@/components/magicui/globe"
 export function About() {
   return (
-    <div className="max-w-6xl min-h-64 mx-auto px-8">
-        <Spotlight />
-      <div className="flex flex-col items-center mb-16">
-        <h1 className="text-4xl font-bold text-center mb-16 text-white">About Me</h1>
-        <p className="text-lg text-center max-w-2xl p-12 text-white">
+    <div className="max-w-6xl min-h-64 mx-auto px-8 relative">
+
+     
+      <div className="flex flex-col items-center mb-8">
+        <p className="text-lg text-center max-w-2xl p-8 text-white">
           I am a software engineer with a passion for building scalable and efficient systems.
         </p>
       </div>
@@ -24,6 +23,9 @@ export function About() {
         <div>
           <h3 className="text-2xl font-bold text-center mb-6 text-white">Database</h3>
           <HoverEffect items={databaseProjects} />
+          <div className="absolute w-full max-w-[800px]">
+            <Globe />
+          </div>
         </div>
       </div>
     </div>

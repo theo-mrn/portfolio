@@ -6,6 +6,8 @@ import { Toaster } from "@/components/ui/sonner"
 import { NextIntlClientProvider } from 'next-intl'
 import { unstable_setRequestLocale } from 'next-intl/server'
 import { locales, type Locale } from '@/i18n/settings'
+import { ThemeProvider } from "@/components/components/theme-provider"
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -51,9 +53,16 @@ export default async function LocaleLayout(props: Props) {
         <link rel="icon" href="/favicon/image.png" />
       </head>
       <body className={`${inter.className}`} suppressHydrationWarning>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          {props.children}
-        </NextIntlClientProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            {props.children}
+          </NextIntlClientProvider>
+        </ThemeProvider>
         <Toaster />
       </body>
     </html>

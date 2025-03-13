@@ -10,9 +10,8 @@ import {
   MorphingDialogContainer,
   MorphingDialogDescription,
 } from '@/components/core/morphing-dialog';
-
+import { SparklesCore } from "@/components/ui/sparkles";
 import Link from "next/link"
-import { useTranslations } from 'next-intl'
 
 
 
@@ -45,21 +44,34 @@ const projects = [
 ]
 
 export function Projects() {
-  const t = useTranslations('security')
   return (
     <section className="py-20">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="flex flex-col items-center text-center mb-12"
-        >
-          <h2 className="text-3xl font-bold tracking-tight">{t('title')}</h2>
-          <div className="w-20 h-1 bg-primary/50 rounded-full mt-4" />
-        </motion.div>
+        <div className="h-[30rem] w-full bg-zinc-900 flex flex-col items-center justify-center overflow-hidden rounded-md relative">
+        <h1 className="md:text-7xl text-3xl lg:text-9xl font-bold text-center text-white relative z-20">
+          Mes projets
+        </h1>
+        <div className="w-[40rem] h-40 relative">
+          {/* Gradients */}
+          <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
+          <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
+          <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
+          <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4" />
 
+          {/* Core component */}
+          <SparklesCore
+            background="transparent"
+            minSize={0.4}
+            maxSize={1}
+            particleDensity={1200}
+            className="w-full h-full"
+            particleColor="#FFFFFF"
+          />
+
+          {/* Radial Gradient to prevent sharp edges */}
+          <div className="absolute inset-0 w-full h-full bg-zinc-900 [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
+        </div>
+      </div>
+      <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <motion.div

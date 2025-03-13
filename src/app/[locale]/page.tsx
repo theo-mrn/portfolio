@@ -1,5 +1,7 @@
 "use client"
 
+
+
 import { useRef, useState, useEffect } from "react"
 import { Header } from "@/components/sections/Header"
 import { Hero } from "@/components/sections/Hero"
@@ -10,6 +12,7 @@ import { About } from "@/components/sections/About"
 import { ScrollProgress } from "@/components/magicui/scroll-progress"
 import { DotPattern } from "@/components/magicui/dot-pattern"
 import BackToTop from "@/components/magicui/back-to-top"
+
 import { cn } from "@/lib/utils"
 import { config } from "../config"
 
@@ -64,7 +67,8 @@ export default function LocalePage() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-zinc-900 text-foreground">  
+      
       <ScrollProgress className="top-[69px]" />
       <Header 
         activeSection={activeSection} 
@@ -87,8 +91,9 @@ export default function LocalePage() {
         )}
       />
       <div className="relative min-h-screen py-16" ref={aboutRef}>
-     
+        
         <About />
+        
       </div>
       
       <div ref={projectsRef}>
