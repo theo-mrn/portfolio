@@ -5,13 +5,14 @@
 import { useRef, useState, useEffect } from "react"
 import { Header } from "@/components/sections/Header"
 import { Hero } from "@/components/sections/Hero"
-import { Projects } from "@/components/sections/Projects"
 import { Contact } from "@/components/sections/Contact"
 import { Footer } from "@/components/sections/Footer"
-import { About } from "@/components/sections/About"
 import { ScrollProgress } from "@/components/magicui/scroll-progress"
 import { DotPattern } from "@/components/magicui/dot-pattern"
 import BackToTop from "@/components/magicui/back-to-top"
+import { AnimatedBeamDemo } from "@/components/components/demo"
+import ProjectShowcase from "@/components/sections/projet"
+
 
 import { cn } from "@/lib/utils"
 import { config } from "../config"
@@ -91,13 +92,11 @@ export default function LocalePage() {
         )}
       />
       <div className="relative min-h-screen py-16" ref={aboutRef}>
-        
-        <About />
-        
+        <AnimatedBeamDemo />
       </div>
       
       <div ref={projectsRef}>
-        <Projects />
+        <ProjectShowcase />
       </div>
       {/* <div>
         <GlobeDemo />
