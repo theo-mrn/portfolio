@@ -60,7 +60,11 @@ export function AnimatedBeamDemo() {
       className="relative flex w-full max-w-[900px] items-center justify-center overflow-visible px-40 py-10 mx-auto"
       ref={containerRef}
     >
-      <div className="flex size-full flex-col gap-32">
+      <h2 className="text-3xl font-bold text-zinc-100 mb-16 text-center absolute top-[-2rem] left-1/2 transform -translate-x-1/2">
+        Ma stack
+      </h2>
+
+      <div className="flex size-full flex-col gap-32 mt-16">
         <div className="relative flex flex-row items-center justify-between">
           <SectionLabel>Frontend</SectionLabel>
           <div className="relative z-10 flex w-full flex-row items-center justify-between bg-zinc-900/50 px-8 py-4 rounded-2xl border border-zinc-800/50 backdrop-blur-sm">
@@ -176,7 +180,7 @@ export function AnimatedBeamDemo() {
               <TooltipTrigger asChild>
                 <button className="cursor-default">
                   <Circle ref={card7Ref}>
-                    <Image src="/svg/resend.png" alt="Resend" width={32} height={32} />
+                    <Image src="/svg/prisma2.svg" alt="Resend" width={32} height={32} />
                   </Circle>
                 </button>
               </TooltipTrigger>
@@ -186,7 +190,7 @@ export function AnimatedBeamDemo() {
                 align="center"
                 className="z-50 bg-zinc-900/90 px-3 py-1.5 text-sm border border-zinc-800/50 backdrop-blur-sm rounded-lg shadow-xl"
               >
-                <p className="font-medium text-zinc-100">Resend</p>
+                <p className="font-medium text-zinc-100">Prisma</p>
               </TooltipContent>
             </Tooltip>
             <Tooltip>

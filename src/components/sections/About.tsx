@@ -13,7 +13,7 @@ export function About() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div>
-          <h3 className="text-2xl font-bold text-center mb-6 text-white">Frontend</h3>
+          <h3 className="text-2xl font-bold text-center mb-6 text-white">Frontends</h3>
           <HoverEffect items={frontendProjects} />
         </div>
         <div>
@@ -66,8 +66,8 @@ export const backendProjects: Project[] = [
         link: "/svg/docker.svg",
     },
     {
-        title: "Resend",
-        link: "/svg/resend.png",
+        title: "Prisma",
+        link: "/svg/prisma.svg",
     },
     {
         title: "Stripe",

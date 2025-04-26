@@ -11,8 +11,7 @@ import { ScrollProgress } from "@/components/magicui/scroll-progress"
 import { DotPattern } from "@/components/magicui/dot-pattern"
 import BackToTop from "@/components/magicui/back-to-top"
 import { AnimatedBeamDemo } from "@/components/components/demo"
-import ProjectShowcase from "@/components/sections/projet"
-
+import PortfolioProjectsExample from '@/components/sections/PortfolioProjectsExample';
 
 import { cn } from "@/lib/utils"
 import { config } from "../config"
@@ -94,13 +93,9 @@ export default function LocalePage() {
       <div className="relative min-h-screen py-16" ref={aboutRef}>
         <AnimatedBeamDemo />
       </div>
-      
       <div ref={projectsRef}>
-        <ProjectShowcase />
+        <PortfolioProjectsExample />
       </div>
-      {/* <div>
-        <GlobeDemo />
-      </div> */}
       <div ref={contactRef}>
         <Contact />
       </div>
