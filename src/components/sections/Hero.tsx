@@ -34,23 +34,50 @@ export function Hero({ handleScroll, refs }: HeroProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            animate={{ 
+              opacity: 1, 
+              y: [0, -5, 0],
+              x: [0, 3, 0]
+            }}
+            transition={{ 
+              duration: 5,
+              ease: "easeInOut",
+              repeat: Infinity,
+              opacity: { duration: 0.8 }
+            }}
             className="space-y-6"
           >
             <div className="space-y-2">
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
+                animate={{ 
+                  opacity: 1, 
+                  y: [0, -4, 0],
+                  x: [0, 2, 0]
+                }}
+                transition={{ 
+                  duration: 6,
+                  ease: "easeInOut",
+                  repeat: Infinity,
+                  opacity: { duration: 0.5, delay: 0.2 }
+                }}
                 className="text-4xl md:text-6xl font-bold tracking-tight"
               >
                 {t('title')} <span className="text-primary">{t('highlight')}</span>
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
+                animate={{ 
+                  opacity: 1, 
+                  y: [0, -3, 0],
+                  x: [0, -2, 0]
+                }}
+                transition={{ 
+                  duration: 7,
+                  ease: "easeInOut",
+                  repeat: Infinity,
+                  opacity: { duration: 0.5, delay: 0.4 }
+                }}
                 className="text-xl text-muted-foreground"
               >
                 {t('description')}
@@ -58,8 +85,17 @@ export function Hero({ handleScroll, refs }: HeroProps) {
             </div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
+              animate={{ 
+                opacity: 1, 
+                y: [0, -4, 0],
+                x: [0, 3, 0]
+              }}
+              transition={{ 
+                duration: 5.5,
+                ease: "easeInOut",
+                repeat: Infinity,
+                opacity: { duration: 0.5, delay: 0.6 }
+              }}
               className="flex flex-col sm:flex-row gap-4"
             >
               <Button onClick={() => handleScroll(projectsRef)} size="lg">
@@ -71,8 +107,17 @@ export function Hero({ handleScroll, refs }: HeroProps) {
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
+              animate={{ 
+                opacity: 1, 
+                y: [0, -3, 0],
+                x: [0, 2, 0]
+              }}
+              transition={{ 
+                duration: 6.5,
+                ease: "easeInOut",
+                repeat: Infinity,
+                opacity: { duration: 0.5, delay: 0.8 }
+              }}
               className="flex items-center gap-6 pt-2"
             >
               <a
@@ -101,8 +146,19 @@ export function Hero({ handleScroll, refs }: HeroProps) {
           </motion.div>
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+            animate={{ 
+              opacity: 1, 
+              scale: 1,
+              y: [0, -8, 0],
+              x: [0, 5, 0]
+            }}
+            transition={{ 
+              duration: 6,
+              ease: "easeInOut",
+              repeat: Infinity,
+              opacity: { duration: 0.8 },
+              scale: { duration: 0.8 }
+            }}
             className="relative aspect-square max-w-md mx-auto overflow-hidden rounded-full"
           >
             <Image
@@ -116,8 +172,17 @@ export function Hero({ handleScroll, refs }: HeroProps) {
         </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1 }}
+          animate={{ 
+            opacity: 1, 
+            y: [20, 15, 20],
+            x: [0, 2, 0]
+          }}
+          transition={{ 
+            duration: 4,
+            ease: "easeInOut",
+            repeat: Infinity,
+            opacity: { duration: 0.5, delay: 1 }
+          }}
           className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2"
         >
           <span className="text-sm text-muted-foreground">{t('discover')}</span>

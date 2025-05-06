@@ -110,13 +110,13 @@ export function DotPattern({
       ref={containerRef}
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-0 h-full w-full",
+        "pointer-events-none absolute inset-0 h-full w-full [shape-rendering:geometricPrecision]",
         className,
       )}
       {...props}
     >
       <defs>
-        <radialGradient id={`${id}-gradient`}>
+        <radialGradient id={`${id}-gradient`} gradientUnits="userSpaceOnUse">
           <stop offset="0%" stopColor="currentColor" stopOpacity="1" />
           <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
         </radialGradient>
@@ -128,7 +128,11 @@ export function DotPattern({
           cy={dot.y}
           r={cr}
           fill={glow ? `url(#${id}-gradient)` : "currentColor"}
-          className="text-neutral-400/80"
+          className="text-neutral-400/80 [shape-rendering:geometricPrecision]"
+          style={{
+            transformBox: 'fill-box',
+            transformOrigin: 'center',
+          }}
           initial={glow ? { opacity: 0.4, scale: 1 } : {}}
           animate={
             glow

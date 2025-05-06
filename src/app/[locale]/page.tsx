@@ -1,33 +1,33 @@
 "use client"
 
-
-
 import { useRef, useState, useEffect } from "react"
-import { Header } from "@/components/sections/Header"
 import { Hero } from "@/components/sections/Hero"
 import { Contact } from "@/components/sections/Contact"
 import { Footer } from "@/components/sections/Footer"
-import { ScrollProgress } from "@/components/magicui/scroll-progress"
 import { DotPattern } from "@/components/magicui/dot-pattern"
 import BackToTop from "@/components/magicui/back-to-top"
-import { AnimatedBeamDemo } from "@/components/components/demo"
-import PortfolioProjectsExample from '@/components/sections/PortfolioProjectsExample';
-
+import { Stack2 } from "@/components/sections/Stack2"
+import { CoursesContent } from "@/components/sections/Education"
+import PortfolioProjectsExample from '@/components/sections/Projets';
+import { TerminalDemo } from "@/components/components/terminal";
 import { cn } from "@/lib/utils"
-import { config } from "../config"
 
 export default function LocalePage() {
   const [activeSection, setActiveSection] = useState("home")
   const homeRef = useRef<HTMLDivElement>(null!)
   const aboutRef = useRef<HTMLDivElement>(null!)
+  const educationRef = useRef<HTMLDivElement>(null!)
   const projectsRef = useRef<HTMLDivElement>(null!)
   const contactRef = useRef<HTMLDivElement>(null!)
+  const terminalRef = useRef<HTMLDivElement>(null!)
 
   useEffect(() => {
     const handleScroll = () => {
       const sections = [
         { ref: homeRef, id: "home" },
         { ref: aboutRef, id: "about" },
+        { ref: educationRef, id: "education" },
+        { ref: terminalRef, id: "terminal" },
         { ref: projectsRef, id: "projects" },
         { ref: contactRef, id: "contact" },
       ]
@@ -68,15 +68,7 @@ export default function LocalePage() {
 
   return (
     <div className="min-h-screen bg-zinc-900 text-foreground">  
-      
-      <ScrollProgress className="top-[69px]" />
-      <Header 
-        activeSection={activeSection} 
-        handleScroll={handleScroll} 
-        refs={refs} 
-        name={config.name}
-      />
-      <div ref={homeRef}>
+      <div ref={homeRef} className="mb-24">
         <Hero handleScroll={handleScroll} refs={{ projectsRef, contactRef }} />
       </div>
       <DotPattern
@@ -90,13 +82,21 @@ export default function LocalePage() {
           "[mask-image:radial-gradient(600px_circle_at_center,white,transparent)]"
         )}
       />
-      <div className="relative min-h-screen py-16" ref={aboutRef}>
-        <AnimatedBeamDemo />
+      <div className="relative py-20" ref={aboutRef}>
+        <Stack2 />
       </div>
-      <div ref={projectsRef}>
+      <div className="relative" ref={educationRef}>
+        <CoursesContent />
+      </div>
+      <div className="relative py-24" ref={projectsRef}>
         <PortfolioProjectsExample />
       </div>
-      <div ref={contactRef}>
+      <section className="min-h-screen w-full flex items-center justify-center bg-zinc-900 relative overflow-hidden py-20" ref={terminalRef}>
+        <div className="w-full max-w-2xl px-4">
+          <TerminalDemo />
+        </div>
+      </section>
+      <div className="flex justify-center items-center py-24" ref={contactRef}>
         <Contact />
       </div>
       <Footer />

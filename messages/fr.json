@@ -31,16 +31,18 @@
     "title":"Mes projets"
   },
 
-"security":{
-  "title":"Sécurité",
-  "soustitre1":"Pratiquant en ",
-  "soustitre2":"cybersécurité",
-  "description1":"Pratiquant en cybersécurité et en protection des systèmes d'information.",
-  "description2":"Compétences en analyse des vulnérabilités et en tests d'intrusion."
-},
+  "education": {
+    "title": "Mes formations en ligne",
+    "description": "Une sélection des formations en ligne que j'ai suivies pour développer mes compétences"
+  },
 
-
-
+  "security":{
+    "title":"Sécurité",
+    "soustitre1":"Pratiquant en ",
+    "soustitre2":"cybersécurité",
+    "description1":"Pratiquant en cybersécurité et en protection des systèmes d'information.",
+    "description2":"Compétences en analyse des vulnérabilités et en tests d'intrusion."
+  },
 
   "contact":{
     "message1":"Discutons de votre projet",

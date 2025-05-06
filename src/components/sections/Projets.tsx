@@ -297,7 +297,7 @@ const PortfolioProjectsExample = () => {
       image: "/VTT/img3.jpg",
       technologies: [
         {
-          icon: <Image src="/svg/next.svg" alt="Next.js" width={16} height={16} className="h-4 w-4" />,
+          icon: <Image src="/svg/next.png" alt="Next.js" width={16} height={16} className="h-4 w-4" />,
           name: "Next.js",
           size: "sm" as const,
         },

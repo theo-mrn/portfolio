@@ -40,7 +40,7 @@ const SectionLabel = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export function AnimatedBeamDemo() {
+export function Stack() {
   const containerRef = useRef<HTMLDivElement>(null);
   const card1Ref = useRef<HTMLDivElement>(null);
   const card2Ref = useRef<HTMLDivElement>(null);
@@ -89,7 +89,7 @@ export function AnimatedBeamDemo() {
               <TooltipTrigger asChild>
                 <button className="cursor-default">
                   <Circle ref={card2Ref}>
-                    <Image src="/svg/react.svg" alt="React" width={32} height={32} />
+                    <Image src="/svg/aws.webp" className="rounded-full" alt="React" width={32} height={32} />
                   </Circle>
                 </button>
               </TooltipTrigger>
@@ -123,7 +123,7 @@ export function AnimatedBeamDemo() {
               <TooltipTrigger asChild>
                 <button className="cursor-default">
                   <Circle ref={card4Ref}>
-                    <Image src="/svg/typescript.svg" alt="TypeScript" width={32} height={32} />
+                    <Image src="/svg/typescript.svg" className="rounded-full"  alt="TypeScript" width={32} height={32} />
                   </Circle>
                 </button>
               </TooltipTrigger>
@@ -254,7 +254,7 @@ export function AnimatedBeamDemo() {
               <TooltipTrigger asChild>
                 <button className="cursor-default">
                   <Circle ref={card11Ref}>
-                    <Image src="/svg/cassandra.png" alt="Cassandra" width={32} height={32} />
+                    <Image src="/svg/cassandra.png" alt="Cassandra" className="rounded-xs" width={32} height={32} />
                   </Circle>
                 </button>
               </TooltipTrigger>

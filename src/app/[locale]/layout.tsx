@@ -8,6 +8,7 @@ import { unstable_setRequestLocale } from 'next-intl/server'
 import { locales, type Locale } from '@/i18n/settings'
 import { ThemeProvider } from "@/components/components/theme-provider"
 import { TooltipProvider } from "@/components/ui/tooltip"
+import { PreloadResources } from '@/components/PreloadResources'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -51,9 +52,10 @@ export default async function LocaleLayout(props: Props) {
   return (
     <html lang={locale} suppressHydrationWarning className="dark">
       <head>
-        <link rel="icon" href="/favicon/image.png" />
+        <link rel="icon" href="/favicon/logo.png" />
       </head>
       <body className={`${inter.className}`} suppressHydrationWarning>
+        <PreloadResources />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

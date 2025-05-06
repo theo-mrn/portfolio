@@ -32,6 +32,11 @@
     "title":"My projects"
   },
 
+  "education": {
+    "title": "My Online Courses",
+    "description": "A selection of online courses I've taken to develop my skills"
+  },
+
   "security":{
     "title":"Security",
     "soustitre1":"Practicing in",
