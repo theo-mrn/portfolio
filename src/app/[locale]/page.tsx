@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useState, useEffect } from "react"
+import { useRef,useEffect } from "react"
 import { Hero } from "@/components/sections/Hero"
 import { Contact } from "@/components/sections/Contact"
 import { Footer } from "@/components/sections/Footer"
@@ -13,7 +13,6 @@ import { TerminalDemo } from "@/components/components/terminal";
 import { cn } from "@/lib/utils"
 
 export default function LocalePage() {
-  const [activeSection, setActiveSection] = useState("home")
   const homeRef = useRef<HTMLDivElement>(null!)
   const aboutRef = useRef<HTMLDivElement>(null!)
   const educationRef = useRef<HTMLDivElement>(null!)
@@ -42,7 +41,6 @@ export default function LocalePage() {
           const elementBottom = bottom + window.scrollY
 
           if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
-            setActiveSection(section.id)
             break
           }
         }
@@ -57,13 +55,6 @@ export default function LocalePage() {
 
   const handleScroll = (ref: React.RefObject<HTMLDivElement>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" })
-  }
-
-  const refs = {
-    homeRef,
-    aboutRef,
-    projectsRef,
-    contactRef,
   }
 
   return (

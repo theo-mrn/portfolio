@@ -47,5 +47,5 @@ export function WorldMapDemo() {
   );
 }
 
-// Re-export for compatibility with dynamic import
-export default { WorldMapDemo };
+const WorldExports = { WorldMapDemo };
+export default WorldExports;

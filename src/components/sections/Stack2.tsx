@@ -217,7 +217,7 @@ export function Stack2() {
       }
     });
     return () => unsubscribe();
-  }, [scrollYProgress, activeIndex]);
+  }, [scrollYProgress, activeIndex, content.length]);
 
   return (
     <div 
