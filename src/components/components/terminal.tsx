@@ -54,7 +54,7 @@ export function TerminalDemo() {
       }}
       transition={{ 
         duration: 1.5,
-        ease: [0.43, 0.13, 0.23, 0.96], // Custom easing
+        ease: [0.43, 0.13, 0.23, 0.96], 
       }}
       className="relative w-full max-w-2xl"
     >

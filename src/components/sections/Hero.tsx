@@ -18,7 +18,7 @@ interface HeroProps {
 
 export function Hero({ handleScroll, refs }: HeroProps) {
   const t = useTranslations('hero')
-  const { projectsRef, contactRef } = refs
+  const { contactRef } = refs
   const { scrollYProgress } = useScroll()
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.9])
@@ -82,6 +82,11 @@ export function Hero({ handleScroll, refs }: HeroProps) {
               >
                 {t('description')}
               </motion.p>
+              {/* Badge "Available for new opportunities" */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900/80 shadow-md border border-zinc-800 w-fit mt-2">
+                <span className="inline-block w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse shadow-green-500/30 shadow-md"></span>
+                <span className="text-green-400 font-medium text-sm">Available for new opportunities</span>
+              </div>
             </div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -98,10 +103,7 @@ export function Hero({ handleScroll, refs }: HeroProps) {
               }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Button onClick={() => handleScroll(projectsRef)} size="lg">
-                {t('cta.projects')}
-              </Button>
-              <Button onClick={() => handleScroll(contactRef)} variant="outline" size="lg">
+              <Button onClick={() => handleScroll(contactRef)}  size="lg">
                 {t('cta.contact')}
               </Button>
             </motion.div>

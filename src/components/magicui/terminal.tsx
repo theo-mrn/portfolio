@@ -178,7 +178,7 @@ export const Terminal = ({
   return (
     <div
       className={cn(
-        "h-full min-h-[300px] w-full min-w-4xl mx-auto rounded-xl border border-border bg-background",
+        "h-full min-h-[180px] w-full min-w-2xl max-w-lg mx-auto rounded-xl border border-border bg-background p-2",
         className,
       )}
     >
@@ -198,7 +198,7 @@ export const Terminal = ({
               animate={{ opacity: 1, y: 0 }} 
               transition={{ duration: 0.5, delay: index * 0.3 }}
               className={cn(
-                "whitespace-normal break-words text-lg",
+                "whitespace-normal break-words text-sm",
                 q.status === "correct" ? "text-green-500" : "text-white"
               )}
             > 
@@ -208,7 +208,7 @@ export const Terminal = ({
 
           {!isQuizComplete && (
             <div className="mt-4 flex items-center gap-x-2">
-              <span className="text-primary text-lg">&gt;</span>
+              <span className="text-primary text-sm">&gt;</span>
               <input
                 ref={inputRef}
                 type="text"
@@ -216,10 +216,9 @@ export const Terminal = ({
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown}
                 className={cn(
-                  "flex-1 bg-transparent text-inherit outline-none focus:ring-0 text-lg",
+                  "flex-1 bg-transparent text-inherit outline-none focus:ring-0 text-sm",
                 )}
                 aria-label="Réponse"
-                autoFocus
                 disabled={isQuizComplete}
               />
             </div>
@@ -231,7 +230,7 @@ export const Terminal = ({
               animate={{ opacity: 1, y: 0 }} 
               transition={{ duration: 0.3 }}
               className={cn(
-                "mt-2 text-base whitespace-normal break-words",
+                "mt-2 text-xs whitespace-normal break-words",
                 feedback === "Correct !" ? "text-green-600" : "text-red-600",
               )}
             >
