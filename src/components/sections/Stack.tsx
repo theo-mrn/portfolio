@@ -89,7 +89,7 @@ export function Stack() {
               <TooltipTrigger asChild>
                 <button className="cursor-default">
                   <Circle ref={card2Ref}>
-                    <Image src="/svg/aws.webp" className="rounded-full" alt="React" width={32} height={32} />
+                    <Image src="/svg/react.svg" className="rounded-full" alt="React" width={32} height={32} />
                   </Circle>
                 </button>
               </TooltipTrigger>
@@ -123,7 +123,7 @@ export function Stack() {
               <TooltipTrigger asChild>
                 <button className="cursor-default">
                   <Circle ref={card4Ref}>
-                    <Image src="/svg/typescript.svg" className="rounded-full"  alt="TypeScript" width={32} height={32} />
+                    <Image src="/svg/typescript.svg" className="rounded-md"  alt="TypeScript" width={32} height={32} />
                   </Circle>
                 </button>
               </TooltipTrigger>
@@ -197,7 +197,7 @@ export function Stack() {
               <TooltipTrigger asChild>
                 <button className="cursor-default">
                   <Circle ref={card8Ref}>
-                    <Image src="/svg/stripe.png" alt="Stripe" width={32} height={32} />
+                    <Image src="/svg/aws.webp" alt="AWS"  className="rounded-md" width={32} height={32} />
                   </Circle>
                 </button>
               </TooltipTrigger>
@@ -207,7 +207,7 @@ export function Stack() {
                 align="center"
                 className="z-50 bg-zinc-900/90 px-3 py-1.5 text-sm border border-zinc-800/50 backdrop-blur-sm rounded-lg shadow-xl"
               >
-                <p className="font-medium text-zinc-100">Stripe</p>
+                <p className="font-medium text-zinc-100">AWS</p>
               </TooltipContent>
             </Tooltip>
           </div>

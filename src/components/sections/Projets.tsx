@@ -2,9 +2,8 @@
 
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { BorderBeam } from "@/components/magicui/border-beam";
 import { TextEffect } from '@/components/magicui/text-effect';
 import { SparklesCore } from "@/components/ui/sparkles";
 import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
@@ -89,8 +88,8 @@ const ProjectCard = ({
               className="text-sm text-muted-foreground"
               preset="fade-in-blur"
               delay={0}
-              speedReveal={2}
-              speedSegment={2}
+              speedReveal={4}
+              speedSegment={4}
             >
               {description}
             </TextEffect>
@@ -133,9 +132,6 @@ const ProjectCard = ({
           </motion.div>
         ))}
       </div>
-
-      <BeamEffect />
-      {isHovered && <BorderBeam duration={4} size={300}  colorFrom="#818cf8" colorTo="#4f46e5" reverse={true}/>}
     </motion.div>
   );
 
@@ -148,70 +144,6 @@ const ProjectCard = ({
   }
 
   return CardContent;
-};
-
-const BeamEffect = () => {
-  return (
-    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-xl">
-      <div className="absolute -inset-[100%] z-0 opacity-50 blur-[100px]">
-        <div className="absolute left-1/2 top-1/2 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/30" />
-      </div>
-      <AnimatedSparkles />
-    </div>
-  );
-};
-
-const AnimatedSparkles = () => (
-  <div className="absolute inset-0 z-40">
-    <Sparkles />
-  </div>
-);
-
-const Sparkles = () => {
-  const [stars, setStars] = useState<
-    { top: number; left: number; duration: number; delay: number }[]
-  >([]);
-
-  useEffect(() => {
-    setStars(
-      Array.from({ length: 12 }).map(() => ({
-        top: Math.random() * 100,
-        left: Math.random() * 100,
-        duration: Math.random() * 2 + 4,
-        delay: Math.random() * 2,
-      }))
-    );
-  }, []);
-
-  return (
-    <div className="absolute inset-0">
-      {stars.map((star, i) => (
-        <motion.span
-          key={`star-${i}`}
-          animate={{
-            opacity: [0.7, 1, 0.7],
-            scale: [1, 1.2, 0.8],
-          }}
-          transition={{
-            duration: star.duration,
-            repeat: Infinity,
-            delay: star.delay,
-            ease: "linear",
-          }}
-          style={{
-            position: "absolute",
-            top: `${star.top}%`,
-            left: `${star.left}%`,
-            width: `2px`,
-            height: `2px`,
-            borderRadius: "50%",
-            zIndex: 1,
-          }}
-          className="inline-block bg-blue-400"
-        />
-      ))}
-    </div>
-  );
 };
 
 interface PortfolioProjectsProps {

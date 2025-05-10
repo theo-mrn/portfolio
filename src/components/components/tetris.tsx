@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useCallback, useRef } from "react"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, ArrowRight, ArrowDown } from "lucide-react"
 
 // Définition des types
 type Cell = number | null
@@ -42,9 +41,10 @@ export default function Game2048Tetris() {
   const [nextPiece, setNextPiece] = useState<Piece | null>(null)
   const [score, setScore] = useState(0)
   const [gameOver, setGameOver] = useState(false)
-  const [isPaused, setIsPaused] = useState(false)
+  const [isPaused, setIsPaused] = useState(true)
   const [highestTile, setHighestTile] = useState(0)
   const gameLoopRef = useRef<NodeJS.Timeout | null>(null)
+  const gameContainerRef = useRef<HTMLDivElement>(null)
 
   // Créer une nouvelle pièce
   const createPiece = useCallback((): Piece => {
@@ -343,6 +343,32 @@ export default function Game2048Tetris() {
     }
   }, [initGame])
 
+  // Ajouter l'Intersection Observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsPaused(false) // Démarrer le jeu quand il est visible
+          } else {
+            setIsPaused(true) // Mettre en pause quand il n'est pas visible
+          }
+        })
+      },
+      {
+        threshold: 0.5, // Démarrer quand au moins 50% du jeu est visible
+      }
+    )
+
+    if (gameContainerRef.current) {
+      observer.observe(gameContainerRef.current)
+    }
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
   // Rendu du plateau de jeu
   const renderBoard = () => {
     // Créer une copie du plateau pour y ajouter la pièce actuelle
@@ -403,21 +429,9 @@ export default function Game2048Tetris() {
   }
 
   return (
-    <div className="flex flex-col items-center md:flex-row md:items-start gap-6">
+    <div ref={gameContainerRef} className="flex flex-col items-center md:flex-row md:items-start gap-6">
       <div className="flex flex-col items-center">
         {renderBoard()}
-
-        <div className="mt-4 grid grid-cols-3 gap-2">
-          <Button variant="outline" size="icon" onClick={() => movePieceHorizontal(-1)} disabled={gameOver || isPaused}>
-            <ArrowLeft className="h-4 w-4" />
-          </Button>
-          <Button variant="outline" size="icon" onClick={() => movePieceDown()} disabled={gameOver || isPaused}>
-            <ArrowDown className="h-4 w-4" />
-          </Button>
-          <Button variant="outline" size="icon" onClick={() => movePieceHorizontal(1)} disabled={gameOver || isPaused}>
-            <ArrowRight className="h-4 w-4" />
-          </Button>
-        </div>
       </div>
 
       <div className="flex flex-col items-center md:items-start">
