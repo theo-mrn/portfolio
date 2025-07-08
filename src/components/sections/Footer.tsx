@@ -11,7 +11,7 @@ export function Footer() {
             <span className="text-sm text-muted-foreground">© {new Date().getFullYear()}</span>
           </div>
           <p className="text-sm text-muted-foreground text-center md:text-right">
-            Conçu et développé avec passion
+            Tous droits réservés
           </p>
         </div>
       </div>

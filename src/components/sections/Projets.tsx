@@ -1,11 +1,9 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
-import { TextEffect } from '@/components/magicui/text-effect';
-import { SparklesCore } from "@/components/ui/sparkles";
 import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
 
 interface ProjectCardProps {
@@ -36,65 +34,38 @@ const ProjectCard = ({
   className,
   url,
 }: ProjectCardProps) => {
-  const [isHovered, setIsHovered] = useState(false);
   const [hoveredTechIndex, setHoveredTechIndex] = useState<number | null>(null);
 
   const CardContent = (
     <motion.div
       className={cn(
-        "relative flex h-[450px] w-full max-w-md select-none flex-col justify-between rounded-xl border-2 bg-muted/70 px-4 py-3 backdrop-blur-sm transition-all duration-700 after:absolute after:-right-1 after:top-[-5%] after:h-[110%] after:w-[5rem]  after:from-background after:to-transparent after:content-[''] hover:border-white/20 hover:bg-muted transform-gpu perspective-1000",
+        "relative flex h-[450px] w-full max-w-md select-none flex-col justify-between rounded-xl border-2 bg-muted/70 px-4 py-3 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-muted",
         className,
         url ? "cursor-pointer" : ""
       )}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+
       whileHover={{
-        y: -10,
-        rotateX: 5,
-        rotateY: 5,
-        transition: {
-          duration: 0.4,
-          ease: "easeOut"
-        }
-      }}
-      initial={{
-        rotateX: 0,
-        rotateY: 0
+        y: -5,
+        transition: { duration: 0.2 }
       }}
     >
       <div className="relative z-10 flex items-center gap-2">
         <p className="text-lg font-medium text-foreground">{title}</p>
       </div>
 
-      <div
-        className={cn(
-          "relative z-10 w-full overflow-hidden rounded-lg transition-all duration-500",
-          isHovered ? "h-48" : "h-64"
-        )}
-      >
+      <div className="relative z-10 w-full overflow-hidden rounded-lg h-48">
         <Image
           src={image}
           alt={title}
           fill
-          className="object-cover transition-transform duration-700 group-hover:scale-110"
+          className="object-cover transition-transform duration-300 hover:scale-105"
         />
       </div>
 
       <div className="relative z-10 mt-4">
-        <AnimatePresence mode="wait">
-          {isHovered && (
-            <TextEffect
-              key="desc"
-              className="text-sm text-muted-foreground"
-              preset="fade-in-blur"
-              delay={0}
-              speedReveal={4}
-              speedSegment={4}
-            >
-              {description}
-            </TextEffect>
-          )}
-        </AnimatePresence>
+        <p className="text-sm text-muted-foreground">
+          {description}
+        </p>
       </div>
 
       <div className="relative z-10 mt-4 flex flex-wrap items-center gap-3">
@@ -106,28 +77,16 @@ const ProjectCard = ({
               sizeMap[tech.size || "sm"],
               tech.className
             )}
-            whileHover={{ scale: 1.1, y: -5 }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              transition: { delay: index * 0.1 }
-            }}
+            whileHover={{ scale: 1.1 }}
             onHoverStart={() => setHoveredTechIndex(index)}
             onHoverEnd={() => setHoveredTechIndex(null)}
             style={{ position: "relative" }}
           >
             {tech.icon}
             {hoveredTechIndex === index && (
-              <motion.div
-                className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-background px-2 py-1 text-xs font-medium shadow-md"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ delay: 0.05 }}
-              >
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-background px-2 py-1 text-xs font-medium shadow-md">
                 {tech.name}
-              </motion.div>
+              </div>
             )}
           </motion.div>
         ))}
@@ -158,12 +117,11 @@ const PortfolioProjects = ({ projects }: PortfolioProjectsProps) => {
           <motion.div
             key={index}
             className="w-full flex justify-center"
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ 
-              duration: 0.6,
-              delay: index * 0.15,
-              ease: [0.23, 1, 0.32, 1]
+              duration: 0.4,
+              delay: index * 0.1
             }}
           >
             <ProjectCard {...project} />
@@ -197,8 +155,7 @@ const PortfolioProjectsExample = () => {
           icon: <Image src="/svg/docker.svg" alt="Docker" width={16} height={16} className="h-4 w-4" />,
           name: "Docker",
           size: "sm" as const,
-        },// Next, react, postgre, docker, tailwind surtout docker et postgre
-        // tailwind, postgre, docker
+        },
       ],
     },
     {
@@ -220,7 +177,7 @@ const PortfolioProjectsExample = () => {
           icon: <Image src="/svg/resend_w.png" alt="Resend" width={16} height={16} className="h-4 w-4" />,
           name: "Resend",
           size: "sm" as const,
-        },// Supabase
+        },
       ],
     },
     {
@@ -239,7 +196,7 @@ const PortfolioProjectsExample = () => {
           size: "sm" as const,
         },
         {
-          icon: <Image src="/svg/firebase.svg" alt="TensorFlow" width={16} height={16} className="h-4 w-4" />,
+          icon: <Image src="/svg/firebase.svg" alt="Firebase" width={16} height={16} className="h-4 w-4" />,
           name: "Firebase",
           size: "sm" as const,
         },
@@ -249,47 +206,24 @@ const PortfolioProjectsExample = () => {
 
   return (
     <>
-    <div className="flex min-h-[600px] w-full items-center justify-center py-20">
-      <div className="w-full max-w-6xl px-4">
-        <div className="h-[30rem] w-full bg-zinc-900 flex flex-col items-center justify-center overflow-hidden rounded-md relative">
-        <h2 className="md:text-7xl text-xl lg:text-9xl font-bold text-center text-white relative z-20">
-          Mes projets
-        </h2>
-        <div className="w-[40rem] h-40 relative">
-          {/* Gradients */}
-          <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
-          <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
-          <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
-          <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4" />
-
-          {/* Core component */}
-          <SparklesCore
-            background="transparent"
-            minSize={0.4}
-            maxSize={1}
-            particleDensity={1200}
-            className="w-full h-full"
-            particleColor="#FFFFFF"
-          />
-
-          {/* Radial Gradient to prevent sharp edges */}
-          <div className="absolute inset-0 w-full h-full bg-zinc-900 [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
+      <div className="flex min-h-[600px] w-full items-center justify-center py-20">
+        <div className="w-full max-w-6xl px-4">
+          <div className="mb-16 text-center">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8">
+              Mes projets
+            </h2>
+          </div>
+          <PortfolioProjects projects={projects} />
         </div>
       </div>
-        <PortfolioProjects projects={projects} />
+      <div className="mt-12 flex justify-center">
+        <a href="/CV/DW.pdf" target="_blank" rel="noopener noreferrer">
+          <InteractiveHoverButton>
+            <p>Mon CV</p>
+          </InteractiveHoverButton>
+        </a>
       </div>
-      
-      
-    </div>
-    <div className="mt-12 flex justify-center">
-      <a href="/CV/CV.pdf" target="_blank" rel="noopener noreferrer">
-        <InteractiveHoverButton>
-          <p>Mon CV</p>
-        </InteractiveHoverButton>
-      </a>
-    </div>
     </>
-    
   );
 };
 

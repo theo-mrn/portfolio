@@ -85,7 +85,7 @@ export function Hero({ handleScroll, refs }: HeroProps) {
               {/* Badge "Available for new opportunities" */}
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900/80 shadow-md border border-zinc-800 w-fit mt-2">
                 <span className="inline-block w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse shadow-green-500/30 shadow-md"></span>
-                <span className="text-green-400 font-medium text-sm">Available for new opportunities</span>
+                <span className="text-green-400 font-medium text-sm">Ouvert aux opportunités</span>
               </div>
             </div>
             <motion.div

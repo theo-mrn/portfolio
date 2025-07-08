@@ -7,7 +7,6 @@ import { NextIntlClientProvider } from 'next-intl'
 import { unstable_setRequestLocale } from 'next-intl/server'
 import { locales, type Locale } from '@/i18n/settings'
 import { ThemeProvider } from "@/components/components/theme-provider"
-import { TooltipProvider } from "@/components/ui/tooltip"
 import { PreloadResources } from '@/components/PreloadResources'
 
 
@@ -62,11 +61,9 @@ export default async function LocaleLayout(props: Props) {
           enableSystem
           disableTransitionOnChange
         >
-          <TooltipProvider delayDuration={0} skipDelayDuration={0}>
-            <NextIntlClientProvider locale={locale} messages={messages}>
-              {props.children}
-            </NextIntlClientProvider>
-          </TooltipProvider>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            {props.children}
+          </NextIntlClientProvider>
         </ThemeProvider>
         <Toaster />
       </body>
